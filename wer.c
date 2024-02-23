@@ -1,23 +1,28 @@
 
 
-void decimalABinario(int num) {
-    if (num == 0) {
-        return;
+double calcularPotencia(double base, int exponente) {
+    if (exponente == 0) {
+        return 1;
+    } else if (exponente > 0) {
+        return base * calcularPotencia(base, exponente - 1);
+    } else {
+        // Manejo de exponentes negativos
+        return 1 / (base * calcularPotencia(base, -exponente - 1));
     }
-
-    decimalABinario(num / 2);
-    printf("%d", num % 2);
 }
 
 int main() {
-    int num;
+    double base;
+    int exponente;
 
-    printf("Ingrese un número decimal: ");
-    scanf("%d", &num);
+    printf("Ingrese la base: ");
+    scanf("%lf", &base);
 
-    printf("La representación binaria de %d es: ", num);
-    decimalABinario(num);
-    printf("\n");
+    printf("Ingrese el exponente: ");
+    scanf("%d", &exponente);
+
+    printf("%.2lf elevado a %d es: %.6lf\n", base, exponente, calcularPotencia(base, exponente));
 
     return 0;
 }
+
