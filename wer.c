@@ -1,28 +1,23 @@
 
 
-double calcularPotencia(double base, int exponente) {
-    if (exponente == 0) {
-        return 1;
-    } else if (exponente > 0) {
-        return base * calcularPotencia(base, exponente - 1);
-    } else {
-        // Manejo de exponentes negativos
-        return 1 / (base * calcularPotencia(base, -exponente - 1));
-    }
-}
-
 int main() {
-    double base;
-    int exponente;
+    int n;
+    double suma = 0;
 
-    printf("Ingrese la base: ");
-    scanf("%lf", &base);
+    printf("Ingrese la cantidad de números: ");
+    scanf("%d", &n);
 
-    printf("Ingrese el exponente: ");
-    scanf("%d", &exponente);
+    printf("Ingrese los números:\n");
+    for (int i = 0; i < n; ++i) {
+        double num;
+        scanf("%lf", &num);
+        suma += num;
+    }
 
-    printf("%.2lf elevado a %d es: %.6lf\n", base, exponente, calcularPotencia(base, exponente));
+    double promedio = suma / n;
+    printf("El promedio de los números es: %.2lf\n", promedio);
 
     return 0;
 }
+
 
